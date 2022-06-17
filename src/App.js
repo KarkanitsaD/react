@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import "./Styles/App.css";
+import PostItem from "./Components/PostItem";
+import PostsList from "./Components/PostsList";
+import MyButton from "./Components/UI/button/MyButton";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [postsList, setPosts] = useState({
+        head: "HEAD",
+        posts:[
+        {id: 1, title: "JS", body: "Description js!"},
+        {id: 2, title: "C#", body: "Description c#!"},
+        {id: 3, title: "C++", body: "Description c++!"},
+    ]})
+
+    return (
+        <div className="App">
+            <form>
+                <input id={"title"} type={"text"} placeholder={"title"}/>
+                <input id={"description"} type={"text"} placeholder={"description"}/>
+                <MyButton disabled={true}>Create post</MyButton>
+            </form>
+            <PostsList list={postsList}/>
+        </div>
+    );
 }
 
 export default App;
